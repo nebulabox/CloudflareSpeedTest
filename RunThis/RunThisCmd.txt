@@ -7,6 +7,11 @@ sc stop vless80 && sc enable apache2 && sc start apache2
 # 测试结束
 sc stop apache2 && sc disable apache2 && sc start vless80
 
+# My IP selected range : ip-AC.txt
+
+# More ip range ip.more.txt from
+https://github.com/MortezaBashsiz/CFScanner/blob/main/bash/cf.local.iplist
+
 # on windows 
 CloudflareST.exe -n 1024 -t 19 -tl 250 -sl 2 -url https://cftest.para.pub/nb/parapub.bin
 
