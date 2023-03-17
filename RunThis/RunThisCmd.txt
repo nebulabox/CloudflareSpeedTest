@@ -1,8 +1,8 @@
 # CloudflareST.exe -n 16 -t 20 -tl 200 -sl 5 -url https://cftest.para.pub/nb/parapub.bin
 # ./CloudflareST-mac-arm -n 100 -t 20 -tl 200 -sl 5 -url http://cachefly.cachefly.net/100mb.test
 
-
-# 测试之前在火： cftest 
+head -c 100M /dev/urandom > parapub.bin
+# 测试之前在火： cftest , cftestjp
 sc stop vless80 && sc enable apache2 && sc start apache2
 # 测试结束
 sc stop apache2 && sc disable apache2 && sc start vless80
@@ -12,19 +12,27 @@ sc stop apache2 && sc disable apache2 && sc start vless80
 # More ip range ip.more.txt from
 https://github.com/MortezaBashsiz/CFScanner/blob/main/bash/cf.local.iplist
 
-# on windows 
-CloudflareST.exe -n 1024 -t 19 -tl 250 -sl 2 -url https://cftest.para.pub/nb/parapub.bin
+# on windows
+CloudflareST.exe -f ip.txt -p 10 -n 1024 -t 3 -tl 250 -sl 5 -url https://cftest.para.pub/nb/parapub.bin
+CloudflareST.exe -f ip.txt -p 10 -n 1024 -t 3 -tl 250 -sl 5 -url https://cftestjp.para.pub/nb/parapub.bin
 
 code C:\Windows\System32\drivers\etc\hosts
 
 # https://www.cloudflare.com/ips/
 
 // current
-211.22.184.186    20      13      0.35    80.99     18.69          
+211.22.184.186    20      13      0.35    80.99     18.69       
+192.203.230.17    3       3       0.00    36.98     32.27
+
 220.130.80.179    20      20      0.00    66.31     7.38
 172.67.55.229
 
+172.67.137.88
+
 // result
+152.69.204.164    3       3       0.00    121.67    29.98
+162.159.28.198    3       2       0.33    117.27    27.67
+220.130.80.179    3       3       0.00    62.41     7.27
 104.17.69.39      19      19      0.00    133.38    14.92
 162.159.193.116   19      19      0.00    131.58    14.13
 211.22.184.186    19      19      0.00    86.20     14.07
