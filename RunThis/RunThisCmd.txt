@@ -2,10 +2,10 @@
 # ./CloudflareST-mac-arm -n 100 -t 20 -tl 200 -sl 5 -url http://cachefly.cachefly.net/100mb.test
 
 head -c 100M /dev/urandom > parapub.bin
-# 测试之前在火： cftest , cftestjp
-sc stop vless80 && sc enable apache2 && sc start apache2
+# 测试之前在火： cftest /mars , cftestjp
+sc stop vless80 && sc disable vless80 && sc enable apache2 && sc start apache2
 # 测试结束
-sc stop apache2 && sc disable apache2 && sc start vless80
+sc stop apache2 && sc disable apache2 && sc enable vless80 && sc start vless80
 
 # My IP selected range : ip-AC.txt
 
@@ -13,8 +13,8 @@ sc stop apache2 && sc disable apache2 && sc start vless80
 https://github.com/MortezaBashsiz/CFScanner/blob/main/bash/cf.local.iplist
 
 # on windows
-CloudflareST.exe -f ip.txt -p 10 -n 1024 -t 3 -tl 250 -sl 5 -url https://cftest.para.pub/nb/parapub.bin
-CloudflareST.exe -f ip.txt -p 10 -n 1024 -t 3 -tl 250 -sl 5 -url https://cftestjp.para.pub/nb/parapub.bin
+CloudflareST.exe -f ip.txt -p 100 -n 1000 -t 3  -dn 100 -tl 300 -sl 5 -url https://cftest.para.pub/nb/parapub.bin
+CloudflareST.exe -f ip.txt -p 100 -n 1000 -t 3  -dn 100 -tl 300 -sl 5 -url https://cftestjp.para.pub/nb/parapub.bin
 
 code C:\Windows\System32\drivers\etc\hosts
 
@@ -26,35 +26,14 @@ code C:\Windows\System32\drivers\etc\hosts
 
 220.130.80.179    20      20      0.00    66.31     7.38
 172.67.55.229
-
 172.67.137.88
 
 // result
-152.69.204.164    3       3       0.00    121.67    29.98
-162.159.28.198    3       2       0.33    117.27    27.67
-220.130.80.179    3       3       0.00    62.41     7.27
-104.17.69.39      19      19      0.00    133.38    14.92
-162.159.193.116   19      19      0.00    131.58    14.13
-211.22.184.186    19      19      0.00    86.20     14.07
-172.67.55.229     19      19      0.00    133.21    9.83
-104.25.211.26     19      19      0.00    132.91    8.80
-104.16.182.223    19      19      0.00    134.03    7.83
-172.64.32.194     19      19      0.00    160.17    14.90
-104.20.157.173    19      19      0.00    137.30    13.43
-172.64.32.198     19      19      0.00    141.04    6.44
-
-
-////old
-162.159.28.198    20      6       0.70    85.16     20.61
-192.203.230.17    20      20      0.00    35.99     31.53
-79.110.53.54      20      20      0.00    145.82    15.90
-104.223.102.254   20      20      0.00    183.80    15.62
-152.69.204.164    20      20      0.00    158.41    14.59
-5.252.198.60      20      20      0.00    146.74    13.26
-220.130.80.179    20      20      0.00    75.23     10.60
-211.72.35.119     20      20      0.00    75.57     8.06
-60.249.92.67      20      20      0.00    81.46     8.06
-147.78.178.242    20      20      0.00    179.31    5.93
-
-
-
+172.64.32.198     19      19      0.00    136.83    28.08
+104.20.157.173    19      19      0.00    138.06    17.73
+104.16.182.223    19      13      0.32    136.48    14.48
+211.72.35.119     19      19      0.00    83.91     13.64
+104.223.102.254   19      19      0.00    175.29    8.51
+172.64.32.194     19      19      0.00    161.97    7.53
+220.130.80.179    19      19      0.00    83.81     6.76
+172.67.55.229     19      19      0.00    140.22    3.99
